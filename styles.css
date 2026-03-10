@@ -1,0 +1,92 @@
+:root {
+    --primary: #3b82f6;
+    --bg: #050505;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+body { background: var(--bg); color: white; overflow-x: hidden; }
+
+#bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; }
+
+/* Global Animations for Name & CSE Tag */
+.name-glow-animate, .cse-glow-animate {
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    animation: masterGlow 2s infinite alternate;
+}
+
+.name-glow-animate span, .accent {
+    color: var(--primary);
+}
+
+@keyframes masterGlow {
+    from { 
+        text-shadow: 0 0 5px var(--primary); 
+        opacity: 0.8;
+    }
+    to { 
+        text-shadow: 0 0 20px var(--primary), 0 0 30px white; 
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+/* Navbar */
+.navbar {
+    position: fixed; width: 100%; padding: 15px 8%;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid var(--border);
+}
+
+.nav-welcome-3d {
+    font-weight: 900; letter-spacing: 2px; font-size: 0.8rem; color: white;
+    text-shadow: 1px 1px 0px var(--primary);
+    animation: float3d 3s infinite ease-in-out;
+}
+
+@keyframes float3d {
+    0%, 100% { transform: translateY(0) rotateX(0); }
+    50% { transform: translateY(-3px) rotateX(10deg); }
+}
+
+/* Hero & Persistent Hover */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; }
+.hero-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.interactive-container { display: flex; align-items: center; justify-content: center; transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+
+.sticky-summary .profile-box { transform: translateX(-20px); }
+.sticky-summary .summary-wrapper { max-width: 600px; opacity: 1; padding-left: 30px; }
+
+.profile-box { width: 250px; height: 250px; border-radius: 40px; border: 3px solid var(--primary); overflow: hidden; transition: transform 0.6s ease; }
+.profile-img { width: 100%; height: 100%; object-fit: cover; }
+.summary-wrapper { max-width: 0; opacity: 0; overflow: hidden; transition: all 0.8s ease; }
+
+/* Sections Styling */
+.section { padding: 40px 10%; visibility: visible; }
+.section-title { font-size: 1.8rem; margin-bottom: 30px; border-left: 4px solid var(--primary); padding-left: 15px; }
+
+.experience-list { display: flex; flex-direction: column; gap: 20px; }
+.exp-card { text-align: left; }
+.exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.tech-tag { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+.exp-card ul { list-style-type: none; }
+.exp-card li { margin-bottom: 8px; font-size: 0.9rem; color: #ccc; position: relative; padding-left: 20px; }
+.exp-card li::before { content: "▹"; position: absolute; left: 0; color: var(--primary); }
+
+/* Technical Stack: Centered & Blended */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
+.logo-box { height: 100px; width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
+.tech-icon.clean-logo { max-width: 80px; max-height: 80px; object-fit: contain; mix-blend-mode: lighten; filter: brightness(1.1) drop-shadow(0 0 10px var(--primary)); }
+.skill-card { text-align: center; padding: 25px; display: flex; flex-direction: column; align-items: center; transition: 0.4s; }
+
+/* Grid & Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.glass-card { background: var(--glass); padding: 25px; border-radius: 18px; border: 1px solid var(--border); transition: 0.4s; }
+.glass-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+.footer-contact { text-align: center; color: #666; font-size: 0.9rem; padding: 40px 0; }
+.social-row { display: flex; gap: 20px; margin-top: 20px; font-size: 1.5rem; }
+.social-row a { color: white; transition: 0.3s; }
